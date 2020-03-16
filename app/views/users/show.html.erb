@@ -1,0 +1,36 @@
+<h1>User info</h1>
+<p>image</p>
+<table>
+	<thead>
+		<tr>
+			<th>name</th><td>名前</td>
+		</tr>
+		<tr>
+			<th>introduction</th><td>プロフ</td>
+		</tr>
+</table>
+
+<p>プロフ編集ボダン</p>
+
+
+
+
+<h1>Books</h1>
+<table>
+	<thead>
+		<tr>
+			<th>&nbsp;</th>
+			<th>Title</th>
+			<th>Opinion</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @books.each do |book| %>
+		<tr>
+			<td>user_image</td>
+			<td><%= book.title %></td> <!--link_to-->
+			<td><%= book.body %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

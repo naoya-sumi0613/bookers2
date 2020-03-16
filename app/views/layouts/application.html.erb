@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Bookers2</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>bookers2</title>
+</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
 
-  <body>
-    <%= yield %>
-  </body>
-</html>
+<body>
+<% if user_signed_in? %>
+  <li class="">
+    <%= link_to 'Home', books_path %>
+  </li>
+  <li class="">
+    ユーザー一覧
+  </li>
+  <li class="">
+    本一覧
+  </li>
+  <li class="">
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  </li>
+
+  <% else %>
+  <li class="">
+    <%= link_to 'Home', "#" %>
+  </li>
+  <li class="">
+    アバウト
+  </li>
+  <li class="">
+    <%= link_to "sign up", new_user_registration_path %>
+  </li>
+  <li class="">
+    <%= link_to "login", new_user_session_path %>
+  </li>
+  <% end %>
+</div>
+
+<%= yield %>
