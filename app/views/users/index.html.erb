@@ -1,0 +1,22 @@
+<%= render 'users/side', users: @users %>
+<%= render 'books/side', books: @books %>
+
+<h1>Users</h1>
+<table>
+	<thead>
+		<tr>
+			<th>image</th>
+			<th>name</th>
+			<th>&nbsp;</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+		<tr>
+			<td>user_image</td>
+			<td><%= user.name %></td> <!--link_to-->
+			<td>show</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

@@ -2,25 +2,9 @@
 	<%= notice %>
 </p>
 
+<%= render 'users/side', users: @users %>
+<%= render 'books/side', books: @books %>
 
-<h1>New book</h1>
-<%= form_for(@book) do |f| %>
-  <% if @book.errors.any? %>
-  <p><%= @book.errors.count %>件のエラーが発生しました。</p>
-  <ul>
-  	<% @book.errors.full_messages.each do |message| %>
-  	<li><%= message %></li>
-  	<% end %>
-  </ul>
-  <% end %>
-<p>Title</p>
-<%= f.text_field :title %>
-<p>Opinion</p>
-<%= f.text_area :body %>
-
-<p><%= f.submit 'Create Book' %></p>
-
-<% end %>
 
 <h1>Books</h1>
 <table>
@@ -35,7 +19,10 @@
 		<% @books.each do |book| %>
 		<tr>
 			<td>user_image</td>
-			<td><%= book.title %></td> <!--link_to-->
+			<td><%= link_to book_path(book) do %>
+				<%= book.title %>
+				<% end %>
+			</td> <!--link_to-->
 			<td><%= book.body %></td>
 		</tr>
 		<% end %>
