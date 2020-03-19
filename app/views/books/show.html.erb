@@ -1,12 +1,23 @@
+<%= render 'layouts/flash' %>
+
+<%= render 'users/side', users: @users %>
+<%= render 'books/side', books: @books %>
+
+
 <h1>Book detail</h1>
-
-
-<p>画像が入ります</p>
-
-<% if @book.user.id == current_user.id %>
-<p><%= @book.title %><%= @book.body %><%= link_to "Edit", edit_book_path(@book) %><%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: '本当に消しますか？'} %></p>
-
-<% else %>
-<p><%= @book.title %><%= @book.body %></p>
-
-<% end %>
+<table>
+	<tr>
+		<td><%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no-image.jpg",size:'50x50' %><br><%= link_to user_path(@user) do %>
+			<%= @user.name %>
+			<% end %></td>
+			<td><%= link_to book_path do %>
+				<%= @books.title %>
+				<% end %>
+			</td>
+			<td><%= @books.body %></td>
+			<% if @books.user.id == current_user.id %>
+			<td><%= link_to "Edit", edit_book_path(@books) %></td>
+			<td><%= link_to "Destroy", book_path(@books), method: :delete, data: { confirm: '本当に消しますか？'} %></td>
+			<% end %>
+	</tr>
+</table>

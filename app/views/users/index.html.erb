@@ -1,5 +1,9 @@
+
+
 <%= render 'users/side', users: @users %>
 <%= render 'books/side', books: @books %>
+
+
 
 <h1>Users</h1>
 <table>
@@ -13,9 +17,9 @@
 	<tbody>
 		<% @users.each do |user| %>
 		<tr>
-			<td>user_image</td>
+			<td><%= attachment_image_tag user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no-image.jpg",size:'50x50' %></td>
 			<td><%= user.name %></td> <!--link_to-->
-			<td>show</td>
+			<td><%= link_to "show", user_path(user) %></td>
 		</tr>
 		<% end %>
 	</tbody>

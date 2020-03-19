@@ -1,13 +1,6 @@
 <h1>New book</h1>
 <%= form_for(@book) do |f| %>
-  <% if @book.errors.any? %>
-  <p><%= @book.errors.count %>件のエラーが発生しました。</p>
-  <ul>
-  	<% @book.errors.full_messages.each do |message| %>
-  	<li><%= message %></li>
-  	<% end %>
-  </ul>
-  <% end %>
+
 <p>Title</p>
 <%= f.text_field :title %>
 <p>Opinion</p>

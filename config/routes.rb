@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
-  get '/homes/about'
+  get 'home/about' => 'homes#about'
   root 'homes#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :books, only: [:new, :create, :index, :show, :edit, :destroy]
   resources :users, only: [:show, :index, :edit, :update]
+  resources :books, only: [:new, :create, :index, :show, :edit, :destroy]
+
 end
