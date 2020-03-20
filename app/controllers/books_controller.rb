@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
-  before_action :correct_user, only: [:edit, :create, :destroy]
-
+  before_action :correct_user, only: [:edit]
+  before_action :authenticate_user!
   def index
       @user = User.find(current_user.id)
       @books = Book.all.order(id: "DESC")
@@ -30,13 +30,29 @@ class BooksController < ApplicationController
       end
   end
 
+  def destroy
+      @book = Book.find(params[:id])
+      @book.destroy
+      redirect_to books_path
+  end
+
+  def update
+      @book = Book.find(params[:id])
+      if @book.update(book_params)
+         redirect_to book_path(@book.id), notice: 'You have updated user successfully.'
+      else
+         render action: :edit
+      end
+  end
+
 
     private
-def correct_user
-  @micropost = current_user.microposts.find_by(id: params[:id])
-    unless @micropost
-      redirect_to root_url
-    end
+    def correct_user
+        @books = Book.find(params[:id])
+        user = User.find(@books.user.id)
+        if current_user != user
+           redirect_to books_path
+        end
     end
 
     def book_params

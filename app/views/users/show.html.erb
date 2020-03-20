@@ -1,14 +1,18 @@
-
+<div class="container">
+<div class="row">
 
 <%= render 'layouts/flash' %>
 
 
+
+<div class="col-lg-3">
 <%= render 'users/side', users: @users %>
 <%= render 'books/side', books: @books %>
+</div>
 
-
+<div class="col-lg-9">
 <h1>Books</h1>
-<table>
+<table class="table table-striped">
 	<thead>
 		<tr>
 			<th>&nbsp;</th>
@@ -33,3 +37,6 @@
 		<% end %>
 	</tbody>
 </table>
+</div>
+</div>
+</div>

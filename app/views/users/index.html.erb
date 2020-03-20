@@ -1,12 +1,15 @@
 
+<div class="container">
+<div class="row">
 
+<div class="col-lg-3">
 <%= render 'users/side', users: @users %>
 <%= render 'books/side', books: @books %>
+</div>
 
-
-
+<div class="col-lg-9">
 <h1>Users</h1>
-<table>
+<table class="table table-striped">
 	<thead>
 		<tr>
 			<th>image</th>
@@ -19,8 +22,11 @@
 		<tr>
 			<td><%= attachment_image_tag user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no-image.jpg",size:'50x50' %></td>
 			<td><%= user.name %></td> <!--link_to-->
-			<td><%= link_to "show", user_path(user) %></td>
+			<td><%= link_to "Show", user_path(user) %></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
+
+</div>
+</div>

@@ -1,23 +1,24 @@
+<div class="container">
 <h2>User info</h2>
 
 <% if @user.errors.any? %>
-  <p><%= @user.errors.count %>errors  prohibited this obj from being saved:</p>
+  <p style="color: red; font-size: 25px;"><%= @user.errors.count %>errors  prohibited this obj from being saved:</p>
   <ul>
   	<% @user.errors.full_messages.each do |message| %>
-  	<li><%= message %></li>
+  	<li style="color: red;"><%= message %></li>
   	<% end %>
   </ul>
   <% end %>
 
 <%= form_for(@user) do |f| %>
-<p>Name<%= f.text_field :name, autofocus: true %></p>
+<h5><strong>Name</strong><%= f.text_field :name, autofocus: true %></h5>
 
-<p>Image<br>
-	<%= f.attachment_field :profile_image %></p>
-<p>Introduction<%= f.text_area :introduction, autofocus: true %></p>
-
-
+<h5><strong>Image</strong></h5>
+	<p><%= f.attachment_field :profile_image %></p>
+<h5><strong>Introduction</strong><%= f.text_area :introduction, autofocus: true %></h5>
 
 
-<%= f.submit "Update" %>
+
+
+<%= f.submit "Update User" %>
 <% end %>

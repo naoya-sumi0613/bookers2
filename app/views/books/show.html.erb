@@ -1,11 +1,18 @@
+<div class="container">
+<div class="row">
+
 <%= render 'layouts/flash' %>
 
+
+
+<div class="col-lg-3">
 <%= render 'users/side', users: @users %>
 <%= render 'books/side', books: @books %>
+</div>
 
-
+<div class="col-lg-9">
 <h1>Book detail</h1>
-<table>
+<table class="table table-striped">
 	<tr>
 		<td><%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no-image.jpg",size:'50x50' %><br><%= link_to user_path(@user) do %>
 			<%= @user.name %>
@@ -16,8 +23,19 @@
 			</td>
 			<td><%= @books.body %></td>
 			<% if @books.user.id == current_user.id %>
-			<td><%= link_to "Edit", edit_book_path(@books) %></td>
-			<td><%= link_to "Destroy", book_path(@books), method: :delete, data: { confirm: '本当に消しますか？'} %></td>
-			<% end %>
+
+<td><%= link_to edit_book_path(@books) do %>
+<button type="button" class="btn btn-sm btn-success">Edit</button>
+<% end %></td>
+<td><%= link_to book_path(@books), method: :delete, data: { confirm: '本当に消しますか？'} do %>
+<button type="button" class="btn btn-sm btn-danger">Destroy</button>
+<% end %></td>
+
+<% end %>
+
 	</tr>
 </table>
+
+</div>
+</div>
+</div>

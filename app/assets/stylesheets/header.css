@@ -1,0 +1,39 @@
+.nav-item {
+	list-style: none;
+	padding: 20px;
+}
+
+.nav-font:link {
+	color: gray;
+}
+.nav-font:visited {
+	color: gray;
+}
+.nav-font:hover {
+	color: white;
+}
+.nav-font:active {
+	color: gray;
+}
+
+.containar {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+footer {
+	text-align: right;
+}
+
+header {
+	background-color: #222222;
+	width: 100%;
+}
+
+div {
+	display: block;
+}
+
+button {
+
+}

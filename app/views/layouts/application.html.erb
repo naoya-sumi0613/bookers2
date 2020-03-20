@@ -10,41 +10,72 @@
   </head>
 
 <body>
+
+<header class="navbar navber-fixed-top navbar-inverse">
+  <div class="containar">
+  <div class="navbar-brand navbar-left" style="color:#fff">Bookers</div>
+  <div class="collapse navbar-collapse">
+<ul class="navbar-nav navbar-right">
 <% if user_signed_in? %>
-  <li class="">
-    <%= link_to 'Home', user_path(current_user.id) %>
+
+  <li class="nav-item">
+    <%= link_to user_path(current_user.id), :class=>"nav-font" do %>
+    <span class="glyphicon glyphicon-home" aria-hidden="true">&nbsp;Home</span>
+    <% end %>
   </li>
-  <li class="">
-    <%= link_to 'Users', users_path %>
+  <li class="nav-item">
+    <%= link_to users_path, :class=>"nav-font" do %>
+    <span class="glyphicon glyphicon-user" aria-hidden="true">&nbsp;Users</span>
+    <% end %>
   </li>
-  <li class="">
-    <%= link_to 'Books', books_path %>
+  <li class="nav-item">
+    <%= link_to books_path, :class=>"nav-font" do %>
+    <span class="glyphicon glyphicon-book" aria-hidden="true">&nbsp;Books</span>
+    <% end %>
   </li>
-  <li class="">
-    <%= link_to "logout", destroy_user_session_path, method: :delete %>
+  <li class="nav-item">
+   <%= link_to destroy_user_session_path, :class=>"nav-font", method: :delete do %>
+   <span class="glyphicon glyphicon-log-out" aria-hidden="true">&nbsp;logout</span>
+   <% end %>
   </li>
 
   <% else %>
-  <li class="">
-    <%= link_to 'Home', '/' %>
+  <li class="nav-item">
+    <%= link_to '/', :class=>"nav-font" do %>
+    <span class="glyphicon glyphicon-home" aria-hidden="true">&nbsp;Home</span>
+    <% end %>
   </li>
-  <li class="">
-    <a href="/home/about">About</a>
+  <li class="nav-item">
+    <%= link_to "/home/about", :class=>"nav-font" do %>
+    <span class="glyphicon glyphicon-link" aria-hidden="true">&nbsp;About</span>
+    <% end %>
   </li>
-  <li class="">
-    <%= link_to "sign up", new_user_registration_path %>
+  <li class="nav-item">
+    <%= link_to new_user_registration_path, :class=>"nav-font" do %>
+    <span class="glyphicon glyphicon-edit" aria-hidden="true">&nbsp;sign up</span>
+    <% end %>
   </li>
-  <li class="">
-    <%= link_to "login", new_user_session_path %>
+  <li class="nav-item">
+    <%= link_to new_user_session_path, :class=>"nav-font" do %>
+    <span class="glyphicon glyphicon-log-in" aria-hidden="true">&nbsp;login</span>
+    <% end %>
   </li>
+
+
   <% end %>
+</ul>
 </div>
+</div>
+</header>
+
 
 <%= yield %>
 
+<div class="containar">
 <footer>
   <P>CopyRight Infratop.inc</P>
 </footer>
+</div>
 </body>
 </html>
 
