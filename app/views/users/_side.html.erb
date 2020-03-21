@@ -18,3 +18,19 @@
         <p><%= link_to edit_user_path(@user), class: "btn btn-default btn-block" do %><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><% end %></p>
     <% end %></p>
 
+
+
+
+
+<h2>New book</h2>
+<%= form_for(@book) do |f| %>
+
+<h4>Title</h4>
+<p><%= f.text_field :title %></p>
+<h4>Opinion</h4>
+<p><%= f.text_area :body %><p>
+
+<p><%= f.submit 'Create Book', class: "btn btn-info btn-block" %></p>
+
+<% end %>
+

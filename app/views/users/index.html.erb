@@ -2,18 +2,18 @@
 <div class="container">
 <div class="row">
 
-<div class="col-lg-3">
+<div class="col-xs-3">
 <%= render 'users/side', users: @users %>
-<%= render 'books/side', books: @books %>
 </div>
 
-<div class="col-lg-9">
+<div class="col-xs-9">
 <h1>Users</h1>
 <table class="table table-striped">
 	<thead>
 		<tr>
 			<th>image</th>
 			<th>name</th>
+			<th>&nbsp;</th>
 			<th>&nbsp;</th>
 		</tr>
 	</thead>
@@ -23,6 +23,8 @@
 			<td><%= attachment_image_tag user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no-image.jpg",size:'50x50' %></td>
 			<td><%= user.name %></td> <!--link_to-->
 			<td><%= link_to "Show", user_path(user) %></td>
+
+
 		</tr>
 		<% end %>
 	</tbody>

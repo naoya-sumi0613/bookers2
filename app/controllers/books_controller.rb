@@ -1,7 +1,8 @@
 class BooksController < ApplicationController
 
-  before_action :correct_user, only: [:edit]
   before_action :authenticate_user!
+  before_action :correct_user, only: [:edit]
+
   def index
       @user = User.find(current_user.id)
       @books = Book.all.order(id: "DESC")
@@ -50,7 +51,8 @@ class BooksController < ApplicationController
     def correct_user
         @books = Book.find(params[:id])
         user = User.find(@books.user.id)
-        if current_user != user
+        if current_user == user
+        else
            redirect_to books_path
         end
     end
