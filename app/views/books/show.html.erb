@@ -36,6 +36,8 @@
 				</td>
 			<% end %>
 
+			<td>コメント数:<%= @books.book_comments.count %></td>
+
 
 			<% if @books.user.id == current_user.id %>
 
@@ -50,6 +52,39 @@
 
 	</tr>
 </table>
+
+<p>&nbsp;</p>
+<% @books.book_comments.each do |book_comment| %>
+<table>
+		<tr>
+          <td><%= attachment_image_tag @user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no-image.jpg",size:'50x50' %><br>
+			<%= book_comment.user.name %>
+		  </td>
+		  <td>
+		  	<%= book_comment.comment %>
+		  </td>
+
+
+		<% if book_comment.user.id == current_user.id %>
+
+		  <td> &nbsp; <%= link_to book_book_comments_path(book_comment), method: :delete, data: { confirm: '本当に消しますか？'} do %>
+		  <button type="button" class="btn btn-sm btn-danger">Destroy</button>
+
+		  </td>
+		<% else %>
+		  <td></td>
+		<% end %>
+		<% end %>
+
+		</tr>
+
+</table>
+<% end %>
+
+<%= form_for [@books, @book_comment] do |f| %>
+<p><%= f.text_area :comment %></p>
+<%= f.submit "送信" %>
+<% end %>
 
 </div>
 </div>
