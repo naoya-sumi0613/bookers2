@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'homes#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users, only: [:show, :index, :edit, :update]
-  resources :books, only: [:new, :create, :index, :show, :edit, :destroy, :update]
-  resources :homes, only: [:top, :about]
+  resources :books, only: [:new, :create, :index, :show, :edit, :destroy, :update] do
+    resource :favorites, only: [:create, :destroy]
+  end
 end
