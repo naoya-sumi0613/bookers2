@@ -15,7 +15,26 @@
 </table>
 
 <p> <% if @user.id == current_user.id %>
-        <p><%= link_to edit_user_path(@user), class: "btn btn-default btn-block" do %><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><% end %></p>
+        <p><%= link_to edit_user_path(@user), class: "btn btn-default btn-block" do %><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+        	<% end %></p>
+
+    <% else %>
+    <% if @user.following?(current_user) %>
+
+		<p><%= link_to user_relationships_path(@user), method: :delete do %><button type="button" class="btn btn-sm btn-primary">フォローを外す</button>
+			<% end %>
+		</p>
+
+	<% else %>
+
+		<p><%= link_to user_relationships_path(@user), method: :post do %><button type="button" class="btn btn-sm btn-success">フォローする</button>
+			<% end %>
+		</p>
+
+	<% end %>
+
+
+
     <% end %></p>
 
 
