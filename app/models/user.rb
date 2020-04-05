@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :follower_user, through: :followed, source: :follower
 
   def following?(user)
-    followed.where(follower_id: user.id).exists?
+    follower.where(followed_id: user.id).exists?
   end
 
   attachment :profile_image

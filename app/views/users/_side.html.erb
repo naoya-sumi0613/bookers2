@@ -10,6 +10,12 @@
 		<tr style="border-top: solid 1px gray;">
 			<th>introduction</th><th><%= @user.introduction %></th>
 		</tr>
+		<tr style="border-top: solid 1px gray;">
+			<th>follows</th><th><%= link_to follow_user_path(@user) do %><%= @user.followed.count %><% end %></th>
+		</tr>
+		<tr style="border-top: solid 1px gray;">
+			<th>followers</th><th><%= link_to follower_user_path(@user) do %><%= @user.follower.count %><% end %></th>
+		</tr>
 		<% end %>
 	</thead>
 </table>
