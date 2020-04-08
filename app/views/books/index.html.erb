@@ -39,25 +39,15 @@
 				<%= attachment_image_tag book.user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no-image.jpg",size:'80x80' %>
 				<% end %>
 				</td>
-			<td><%= link_to book_path(book) do %>
+			<td><%= link_to book_path(book.id) do %>
 				<%= book.title %>
 				<% end %>
 			</td>
 			<td><%= book.body %></td>
 
-						<% if book.favorited_by?(current_user) %>
-				<td><%= link_to book_favorites_path(book), method: :delete do %>
-					<i class="fas fa-heart" aria-hidden="true"></i>
-					<%= book.favorites.count %>
-					<% end %>
-				</td>
-			<% else %>
-				<td><%= link_to book_favorites_path(book), method: :post do %>
-					<i class="far fa-heart" aria-hidden="true"></i>
-					<%= book.favorites.count %>
-					<% end %>
-				</td>
-			<% end %>
+			<td class="favorites_<%= book.id %>">
+			<%= render partial: 'favorites/favorite', locals: { book: book} %>
+		</td>
 
 			<td>コメント数:<%= book.book_comments.count %></td>
 
