@@ -1,0 +1,26 @@
+	<% @book_comments.each do |book_comments| %>
+		<table>
+
+<tr>
+          <td><%= attachment_image_tag book_comments.user, :profile_image, :fill, 80, 80, format: 'jpeg', fallback: "no-image.jpg",size:'50x50' %><br>
+			<%= book_comments.user.name %>
+		  </td>
+		  <td>
+		  	<%= book_comments.comment %>
+		  </td>
+
+
+		<% if book_comments.user.id == current_user.id %>
+
+		  <td> &nbsp; <%= link_to book_book_comment_path(book_comments.book.id, book_comments.id), method: :delete, remote: true, data: { confirm: '本当に消しますか？'} do %>
+		  <button type="button" class="btn btn-sm btn-danger">Destroy</button>
+
+		  </td>
+		<% else %>
+		  <td></td>
+		<% end %>
+		<% end %>
+
+		</tr>
+				</table>
+	<% end %>
